@@ -1,0 +1,54 @@
+<h1>Add Curse</h1>
+
+<div class="well">
+  <form #formCursed="ngForm" (ngSubmit)="onSubmit()" >
+    <div class="form-group">
+      <label for="name">Nome:</label>
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="cursed.name" #name="ngModel"
+        minlength="5" required>
+      <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+        <div [hidden]="!name.errors.required">
+          Digite o nome do maldito.
+        </div>
+        <div [hidden]="!name.errors.minlength">
+          Digite bem o nome para praga pegar, deve conter ao menos 5 caracteres.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input type="number" class="form-control" id="age" name="age" [(ngModel)]="cursed.age" #age="ngModel"
+        minlength="2" required>
+      <div *ngIf="age.errors && (age.dirty || age.touched)" class="alert alert-danger">
+        <div [hidden]="!age.errors.required">
+          Digite a idade do maldito.
+        </div>
+        <div [hidden]="!age.errors.minlength">
+          Digite bem a idade para praga pegar, deve conter ao menos 2 caracteres.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="curse">Curse:</label>
+      <input type="text" class="form-control" id="curse" name="curse" [(ngModel)]="cursed.curse" #curse="ngModel"
+        minlength="5" required>
+      <div *ngIf="curse.errors && (curse.dirty || curse.touched)" class="alert alert-danger">
+        <div [hidden]="!curse.errors.required">
+          Digite a maldição do maldito.
+        </div>
+        <div [hidden]="!curse.errors.minlength">
+          Digite bem a maldição para praga pegar, deve conter ao menos 2 caracteres.
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-success" value="Cadastrar"
+        [disabled]="!formCursed.form.valid">Submit</button>
+      <button type="button" class="btn btn-secondary my-2" (click)="goBack()">Back</button>
+    </div>
+  </form>
+</div>
